@@ -4,7 +4,7 @@ using namespace std;
 
 #ifdef LOCAL
 #include "lib/debug.h"
-#define dbg(...) \
+#define dbg(...)                                                               \
   cerr << "Line " << __LINE__ << ": " FOR_EACH_MACRO(out, __VA_ARGS__) << "\n"
 #else
 #define dbg(...) 69
@@ -15,28 +15,26 @@ const int mod = 1e9 + 7;
 // #define googleOrFacebook
 #define testcases
 
-void solve()
-{
-  int n, i,k;
-  cin >> n>>k;
-  int sm=0, ans=0;
-  for (i = 0; i < n; i++)
-  {
-    int x; cin>>x;
-    if(x>=k){
-      sm+=x;
+void solve() {
+  int n, i, k;
+  cin >> n >> k;
+  int sm = 0, ans = 0;
+  for (i = 0; i < n; i++) {
+    int x;
+    cin >> x;
+    if (x >= k) {
+      sm += x;
     }
-    if(x==0 && sm>0){
+    if (x == 0 && sm > 0) {
       ans++;
       sm--;
     }
   }
-  cout<<ans;
+  cout << ans;
   dbg("SEX");
 }
 
-signed main()
-{
+signed main() {
   cin.tie(NULL);
   ios_base::sync_with_stdio(false);
 #ifdef LOCAL
@@ -47,8 +45,7 @@ signed main()
 #ifdef testcases
   cin >> tt;
 #endif
-  while (t <= tt)
-  {
+  while (t <= tt) {
 #ifdef googleOrFacebook
     cout << "Case #" << t << ": ";
 #endif

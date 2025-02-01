@@ -4,7 +4,7 @@ using namespace std;
 
 #ifdef LOCAL
 #include "lib/debug.h"
-#define dbg(...) \
+#define dbg(...)                                                               \
   cerr << "Line " << __LINE__ << ": " FOR_EACH_MACRO(out, __VA_ARGS__) << "\n"
 #else
 #define dbg(...) 69
@@ -15,42 +15,40 @@ const int mod = 1e9 + 7;
 // #define googleOrFacebook
 #define testcases
 
-void solve()
-{
+void solve() {
   int n, i, k;
-  cin >> n>>k;
-  vector<int> v(n), cnt(n+1, 0);
+  cin >> n >> k;
+  vector<int> v(n), cnt(n + 1, 0);
   map<int, int> mp;
-  int mcnt=0;
-  for (i = 0; i < n; i++)
-  {
+  int mcnt = 0;
+  for (i = 0; i < n; i++) {
     cin >> v[i];
     mp[v[i]]++;
-    mcnt=max(mcnt, mp[v[i]]);
+    mcnt = max(mcnt, mp[v[i]]);
   }
-  int ans=1;
-  for(auto x:mp){
+  int ans = 1;
+  for (auto x : mp) {
     cnt[x.second]++;
   }
-  dbg(cnt,mcnt);
-  for(int i=1;i<=n;i++){
-    if(i==mcnt){
-      cnt[i]--; break;
-    }
-  }
-  for(int i=1;i<=n;i++){
-    while(k>=i && cnt[i]>0){
+  dbg(cnt, mcnt);
+  for (int i = 1; i <= n; i++) {
+    if (i == mcnt) {
       cnt[i]--;
-      k-=i;
+      break;
     }
-    ans+=cnt[i];
   }
-  cout<<ans;
+  for (int i = 1; i <= n; i++) {
+    while (k >= i && cnt[i] > 0) {
+      cnt[i]--;
+      k -= i;
+    }
+    ans += cnt[i];
+  }
+  cout << ans;
   dbg("SEX");
 }
 
-signed main()
-{
+signed main() {
   cin.tie(NULL);
   ios_base::sync_with_stdio(false);
 #ifdef LOCAL
@@ -61,8 +59,7 @@ signed main()
 #ifdef testcases
   cin >> tt;
 #endif
-  while (t <= tt)
-  {
+  while (t <= tt) {
 #ifdef googleOrFacebook
     cout << "Case #" << t << ": ";
 #endif

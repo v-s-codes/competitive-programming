@@ -4,7 +4,7 @@ using namespace std;
 
 #ifdef LOCAL
 #include "lib/debug.h"
-#define dbg(...) \
+#define dbg(...)                                                               \
   cerr << "Line " << __LINE__ << ": " FOR_EACH_MACRO(out, __VA_ARGS__) << "\n"
 #else
 #define dbg(...) 69
@@ -15,33 +15,32 @@ const int mod = 1e9 + 7;
 // #define googleOrFacebook
 #define testcases
 
-void solve()
-{
+void solve() {
   int n, i;
   cin >> n;
-  string s; cin>>s;
-  int tot=0;
-  for (i = 0; i < n; i++)
-  {
-    tot+=(s[i]-'0');
+  string s;
+  cin >> s;
+  int tot = 0;
+  for (i = 0; i < n; i++) {
+    tot += (s[i] - '0');
   }
-  if(tot%2){
-    cout<<"NO"; return;
+  if (tot % 2) {
+    cout << "NO";
+    return;
   }
-  if(tot==2){
-    for(i=1;i<n;i++){
-      if(s[i-1]==s[i] && s[i]=='1'){
-        cout<<"NO"; return;
+  if (tot == 2) {
+    for (i = 1; i < n; i++) {
+      if (s[i - 1] == s[i] && s[i] == '1') {
+        cout << "NO";
+        return;
       }
     }
-  
   }
-  cout<<"YES";
+  cout << "YES";
   dbg("SEX");
 }
 
-signed main()
-{
+signed main() {
   cin.tie(NULL);
   ios_base::sync_with_stdio(false);
 #ifdef LOCAL
@@ -52,8 +51,7 @@ signed main()
 #ifdef testcases
   cin >> tt;
 #endif
-  while (t <= tt)
-  {
+  while (t <= tt) {
 #ifdef googleOrFacebook
     cout << "Case #" << t << ": ";
 #endif

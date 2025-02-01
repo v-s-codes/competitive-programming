@@ -4,7 +4,7 @@ using namespace std;
 
 #ifdef LOCAL
 #include "lib/debug.h"
-#define dbg(...) \
+#define dbg(...)                                                               \
   cerr << "Line " << __LINE__ << ": " FOR_EACH_MACRO(out, __VA_ARGS__) << "\n"
 #else
 #define dbg(...) 69
@@ -15,53 +15,43 @@ const int mod = 1e9 + 7;
 // #define googleOrFacebook
 #define testcases
 
-void solve()
-{
+void solve() {
   int n;
   cin >> n;
-  string a="";
-  string e="";
+  string a = "";
+  string e = "";
   string i = "";
   string o = "";
   string u = "";
-  int x=n/5;
-  for(int j=0;j<x;j++)
-  {
-    a+="a";
-    e+="e";
-    i+="i";
-    o+="o";
-    u+="u";
+  int x = n / 5;
+  for (int j = 0; j < x; j++) {
+    a += "a";
+    e += "e";
+    i += "i";
+    o += "o";
+    u += "u";
   }
-  int y=n%5;
-  if(y==1)
-  {
-    a+="a";
+  int y = n % 5;
+  if (y == 1) {
+    a += "a";
+  } else if (y == 2) {
+    a += "a";
+    e += "e";
+  } else if (y == 3) {
+    a += "a";
+    e += "e";
+    i += "i";
+  } else if (y == 4) {
+    a += "a";
+    e += "e";
+    i += "i";
+    o += "o";
   }
-  else if(y==2)
-  {
-    a+="a";
-    e+="e";
-  }
-  else if(y==3)
-  {
-    a+="a";
-    e+="e";
-    i+="i";
-  }
-  else if(y==4)
-  {
-    a+="a";
-    e+="e";
-    i+="i";
-    o+="o";
-  }
-  cout<<a<<e<<i<<o<<u;
+  cout << a << e << i << o << u;
   dbg("SEX");
 }
 
-signed main()
-{
+signed main() {
   cin.tie(NULL);
   ios_base::sync_with_stdio(false);
 #ifdef LOCAL
@@ -72,8 +62,7 @@ signed main()
 #ifdef testcases
   cin >> tt;
 #endif
-  while (t <= tt)
-  {
+  while (t <= tt) {
 #ifdef googleOrFacebook
     cout << "Case #" << t << ": ";
 #endif

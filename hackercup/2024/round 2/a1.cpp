@@ -4,7 +4,7 @@ using namespace std;
 
 #ifdef LOCAL
 #include "lib/debug.h"
-#define dbg(...) \
+#define dbg(...)                                                               \
   cerr << "Line " << __LINE__ << ": " FOR_EACH_MACRO(out, __VA_ARGS__) << "\n"
 #else
 #define dbg(...) 69
@@ -15,35 +15,35 @@ const int mod = 1e9 + 7;
 #define googleOrFacebook
 #define testcases
 vector<int> poss;
-void solve()
-{
-  int a,b,m,ans=0; cin>>a>>b>>m;
-  for(auto z:poss){
-    if(z>=a && z<=b && z%m==0){
+void solve() {
+  int a, b, m, ans = 0;
+  cin >> a >> b >> m;
+  for (auto z : poss) {
+    if (z >= a && z <= b && z % m == 0) {
       ans++;
     }
   }
-  cout<<ans;
+  cout << ans;
   dbg("SEX");
 }
 
-signed main()
-{
+signed main() {
   cin.tie(NULL);
   ios_base::sync_with_stdio(false);
   poss.clear();
-  for(int i = 0; i < 9; i++)
-  {
-    int k=2*i+1;
-    for(int j=1;j<10-i;j++){
-      int al=j;
-      int be=k;
-      string s="";
-      auto curr=al;
-      while(be--){
-        s.push_back('0'+curr);
-        if(be>i)curr++;
-        else curr--;
+  for (int i = 0; i < 9; i++) {
+    int k = 2 * i + 1;
+    for (int j = 1; j < 10 - i; j++) {
+      int al = j;
+      int be = k;
+      string s = "";
+      auto curr = al;
+      while (be--) {
+        s.push_back('0' + curr);
+        if (be > i)
+          curr++;
+        else
+          curr--;
       }
       poss.push_back(stoll(s));
     }
@@ -57,8 +57,7 @@ signed main()
 #ifdef testcases
   cin >> tt;
 #endif
-  while (t <= tt)
-  {
+  while (t <= tt) {
 #ifdef googleOrFacebook
     cout << "Case #" << t << ": ";
 #endif

@@ -4,21 +4,19 @@ using namespace std;
 
 #ifdef LOCAL
 #include "lib/debug.h"
-#define dbg(...) \
+#define dbg(...)                                                               \
   cerr << "Line " << __LINE__ << ": " FOR_EACH_MACRO(out, __VA_ARGS__) << "\n"
 #else
 #define dbg(...) 69
 #endif
 
 const int mod = 998244353;
-int power(int x, int y)
-{
+int power(int x, int y) {
   int res = 1;
   x = x % mod;
   if (x == 0)
     return 0;
-  while (y > 0)
-  {
+  while (y > 0) {
     if (y & 1)
       res = (res * x) % mod;
     y = y >> 1;
@@ -30,8 +28,7 @@ int power(int x, int y)
 // #define testcases
 // a(n) = 3*a(n-1) - a(n-2)
 vector<int> dp;
-int fun(int sz)
-{
+int fun(int sz) {
   // dbg(sz);
   // return 0;
   if (sz < 0)
@@ -47,15 +44,13 @@ int fun(int sz)
   return dp[sz] = (3 * fun(sz - 1) - fun(sz - 2) + mod) % mod;
 }
 
-void solve()
-{
+void solve() {
   int n, i, m;
 
   cin >> n >> m;
 
   vector<int> v({0});
-  for (i = 0; i < m; i++)
-  {
+  for (i = 0; i < m; i++) {
     int x;
     cin >> x;
     v.push_back(x);
@@ -66,8 +61,7 @@ void solve()
   v.push_back(n + 1);
   // dbg(v);
   int ans = 1;
-  for (i = 1; i < v.size(); i++)
-  {
+  for (i = 1; i < v.size(); i++) {
     // dbg(v[i]-v[i-1]-1);
     (ans *= fun(v[i] - v[i - 1] - 1)) %= mod;
   }
@@ -76,8 +70,7 @@ void solve()
   dbg("SEX");
 }
 
-signed main()
-{
+signed main() {
   cin.tie(NULL);
   ios_base::sync_with_stdio(false);
 #ifdef LOCAL
@@ -88,8 +81,7 @@ signed main()
 #ifdef testcases
   cin >> tt;
 #endif
-  while (t <= tt)
-  {
+  while (t <= tt) {
 #ifdef googleOrFacebook
     cout << "Case #" << t << ": ";
 #endif

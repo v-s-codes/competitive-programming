@@ -4,21 +4,19 @@ using namespace std;
 
 #ifdef LOCAL
 #include "lib/debug.h"
-#define dbg(...) \
+#define dbg(...)                                                               \
   cerr << "Line " << __LINE__ << ": " FOR_EACH_MACRO(out, __VA_ARGS__) << "\n"
 #else
 #define dbg(...) 69
 #endif
 
 const int mod = 1e9;
-int power(int x, int y)
-{
+int power(int x, int y) {
   int res = 1;
   x = x % mod;
   if (x == 0)
     return 0;
-  while (y > 0)
-  {
+  while (y > 0) {
     if (y & 1)
       res = (res * x) % mod;
     y = y >> 1;
@@ -29,8 +27,7 @@ int power(int x, int y)
 // #define googleOrFacebook
 // #define testcases
 
-void solve()
-{
+void solve() {
   // 28433*2^7830457+1
   int x = 7830457;
   int val = 2;
@@ -41,8 +38,7 @@ void solve()
   dbg("SEX");
 }
 
-signed main()
-{
+signed main() {
   cin.tie(NULL);
   ios_base::sync_with_stdio(false);
 #ifdef LOCAL
@@ -53,8 +49,7 @@ signed main()
 #ifdef testcases
   cin >> tt;
 #endif
-  while (t <= tt)
-  {
+  while (t <= tt) {
 #ifdef googleOrFacebook
     cout << "Case #" << t << ": ";
 #endif

@@ -4,7 +4,7 @@ using namespace std;
 
 #ifdef LOCAL
 #include "lib/debug.h"
-#define dbg(...) \
+#define dbg(...)                                                               \
   cerr << "Line " << __LINE__ << ": " FOR_EACH_MACRO(out, __VA_ARGS__) << "\n"
 #else
 #define dbg(...) 69
@@ -15,38 +15,39 @@ const int mod = 1e9 + 7;
 // #define googleOrFacebook
 #define testcases
 
-void solve()
-{
-  int n, i,k;
-  cin >> n>>k;
+void solve() {
+  int n, i, k;
+  cin >> n >> k;
   vector<int> v(n);
-  int g=0;
-  for (i = 0; i < n; i++)
-  {
+  int g = 0;
+  for (i = 0; i < n; i++) {
     cin >> v[i];
-    if(v[i]){
-      g=__gcd(g, v[i]);
+    if (v[i]) {
+      g = __gcd(g, v[i]);
     }
   }
-  if(n==1){
-    if(v[0]>=k){
-      cout<<k-1; return;
+  if (n == 1) {
+    if (v[0] >= k) {
+      cout << k - 1;
+      return;
     }
-    cout<<k; return;
+    cout << k;
+    return;
   }
-  if(g==1){
-    cout<<n+k-1; return;
+  if (g == 1) {
+    cout << n + k - 1;
+    return;
   }
-  if((n-1)*(g-1)<=k){
-    cout<<(n-1)*g+(k-(n-1)*(g-1))+1; return;
+  if ((n - 1) * (g - 1) <= k) {
+    cout << (n - 1) * g + (k - (n - 1) * (g - 1)) + 1;
+    return;
   }
-  cout<<(k/(g-1))*g+(k%(g-1))+1;
+  cout << (k / (g - 1)) * g + (k % (g - 1)) + 1;
 
   dbg("SEX");
 }
 
-signed main()
-{
+signed main() {
   cin.tie(NULL);
   ios_base::sync_with_stdio(false);
 #ifdef LOCAL
@@ -57,8 +58,7 @@ signed main()
 #ifdef testcases
   cin >> tt;
 #endif
-  while (t <= tt)
-  {
+  while (t <= tt) {
 #ifdef googleOrFacebook
     cout << "Case #" << t << ": ";
 #endif

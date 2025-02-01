@@ -4,7 +4,7 @@ using namespace std;
 
 #ifdef LOCAL
 #include "lib/debug.h"
-#define dbg(...) \
+#define dbg(...)                                                               \
   cerr << "Line " << __LINE__ << ": " FOR_EACH_MACRO(out, __VA_ARGS__) << "\n"
 #else
 #define dbg(...) 69
@@ -14,27 +14,30 @@ const int mod = 1e9 + 7;
 
 // #define googleOrFacebook
 #define testcases
-struct tower{
+struct tower {
   int x, y, p;
-  map<int,int> m;
+  map<int, int> m;
 };
-void solve()
-{
+void solve() {
   int n, m, k;
-  cin>>n>>m>>k;
-  vector<pair<int,int>> vp;
-  for(int i=0;i<n;i++){
-    string s; cin>>s;
-    for(int j=0;j<m;j++){
-      if(s[j]=='#')vp.push_back({i, j});
+  cin >> n >> m >> k;
+  vector<pair<int, int>> vp;
+  for (int i = 0; i < n; i++) {
+    string s;
+    cin >> s;
+    for (int j = 0; j < m; j++) {
+      if (s[j] == '#')
+        vp.push_back({i, j});
     }
   }
   vector<tower> tw(k);
-  for(int i=0;i<k;i++)cin>>tw[k].x>>tw[k].y>>tw[k].p;
+  for (int i = 0; i < k; i++)
+    cin >> tw[k].x >> tw[k].y >> tw[k].p;
 
-  for(auto z:tw){
-    for(auto zz:vp){
-      int d=ceil(sqrtl((z.x-zz.first)*(z.x-zz.first)+(z.y-zz.second)*(z.y-zz.second)));
+  for (auto z : tw) {
+    for (auto zz : vp) {
+      int d = ceil(sqrtl((z.x - zz.first) * (z.x - zz.first) +
+                         (z.y - zz.second) * (z.y - zz.second)));
       z.m[d]++;
     }
   }
@@ -42,8 +45,7 @@ void solve()
   dbg("SEX");
 }
 
-signed main()
-{
+signed main() {
   cin.tie(NULL);
   ios_base::sync_with_stdio(false);
 #ifdef LOCAL
@@ -54,8 +56,7 @@ signed main()
 #ifdef testcases
   cin >> tt;
 #endif
-  while (t <= tt)
-  {
+  while (t <= tt) {
 #ifdef googleOrFacebook
     cout << "Case #" << t << ": ";
 #endif

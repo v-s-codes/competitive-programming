@@ -4,7 +4,7 @@ using namespace std;
 
 #ifdef LOCAL
 #include "lib/debug.h"
-#define dbg(...) \
+#define dbg(...)                                                               \
   cerr << "Line " << __LINE__ << ": " FOR_EACH_MACRO(out, __VA_ARGS__) << "\n"
 #else
 #define dbg(...) 69
@@ -15,13 +15,11 @@ const int mod = 1e9 + 7;
 // #define googleOrFacebook
 // #define testcases
 
-void solve()
-{
+void solve() {
   map<string, set<string>> mp;
   set<string> s;
   string ss;
-  while (cin >> ss)
-  {
+  while (cin >> ss) {
     auto a = ss.substr(0, 2);
     auto b = ss.substr(3, 2);
     mp[a].insert(b);
@@ -31,14 +29,11 @@ void solve()
   }
   dbg(s.size());
   int ans = 0;
-  for (auto x : s)
-  {
-    for (auto y : mp[x])
-    {
-      for (auto z : mp[y])
-      {
-        if ((x[0] == 't' || y[0] == 't' || z[0] == 't') && z != x && mp[x].find(z) != mp[x].end())
-        {
+  for (auto x : s) {
+    for (auto y : mp[x]) {
+      for (auto z : mp[y]) {
+        if ((x[0] == 't' || y[0] == 't' || z[0] == 't') && z != x &&
+            mp[x].find(z) != mp[x].end()) {
           ans++;
         }
       }
@@ -48,8 +43,7 @@ void solve()
   cout << ans / 6;
 }
 
-signed main()
-{
+signed main() {
   cin.tie(NULL);
   ios_base::sync_with_stdio(false);
 #ifdef LOCAL
@@ -60,8 +54,7 @@ signed main()
 #ifdef testcases
   cin >> tt;
 #endif
-  while (t <= tt)
-  {
+  while (t <= tt) {
 #ifdef googleOrFacebook
     cout << "Case #" << t << ": ";
 #endif

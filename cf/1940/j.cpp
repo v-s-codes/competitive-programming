@@ -4,7 +4,7 @@ using namespace std;
 
 #ifdef LOCAL
 #include "lib/debug.h"
-#define dbg(...) \
+#define dbg(...)                                                               \
   cerr << "Line " << __LINE__ << ": " FOR_EACH_MACRO(out, __VA_ARGS__) << "\n"
 #else
 #define dbg(...) 69
@@ -19,20 +19,20 @@ const int N = 1e5 + 5;
 
 vector dis(2, vector<int>(N));
 
-void djistra(int x) {
+void djistra(int x) {}
 
-}
+#define tcT template <class T
+tcT > using p = priority_queue<T, vector<T>, greater<T>>;
 
-#define tcT template<class T
-tcT> using p = priority_queue<T, vector<T>, greater<T>>;
-
-void solve()
-{
-  int n, m; cin >> n >> m;
+void solve() {
+  int n, m;
+  cin >> n >> m;
   vector<vector<array<int, 2>>> edges(n);
   for (int i = 0; i < m; i++) {
-    int u, v, w; cin >> u >> v >> w;
-    --u; --v;
+    int u, v, w;
+    cin >> u >> v >> w;
+    --u;
+    --v;
     edges[u].push_back({v, w});
     edges[v].push_back({u, w});
     // edges.push_back({u, v, w});
@@ -45,26 +45,25 @@ void solve()
 
   ds.emplace(0, 0);
   dis[0] = {0, inf};
-  while(!ds.empty()){
-    auto [x, u] = ds.top(); ds.pop();
+  while (!ds.empty()) {
+    auto [x, u] = ds.top();
+    ds.pop();
     cout << x << ' ' << u << '\n';
     cout << dis[u][0] << ' ' << dis[u][1] << "\n";
-    for(auto [v, w] : edges[u]){
-      if(dis[v][1] > x + w){
+    for (auto [v, w] : edges[u]) {
+      if (dis[v][1] > x + w) {
         dis[v][1] = x + w;
         ds.emplace(dis[v][1], v);
-        if(dis[v][0] > dis[v][1]) swap(dis[v][0], dis[v][1]);
+        if (dis[v][0] > dis[v][1])
+          swap(dis[v][0], dis[v][1]);
       }
     }
-    
   }
-
 
   std::cout << dis[n - 1][0] + dis[n - 1][1] << "\n";
 }
 
-signed main()
-{
+signed main() {
   cin.tie(NULL);
   ios_base::sync_with_stdio(false);
 #ifdef LOCAL
@@ -75,8 +74,7 @@ signed main()
 #ifdef testcases
   // cin >> tt;
 #endif
-  while (t <= tt)
-  {
+  while (t <= tt) {
 #ifdef googleOrFacebook
     cout << "Case #" << t << ": ";
 #endif

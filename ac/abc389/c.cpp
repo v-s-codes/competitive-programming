@@ -4,7 +4,7 @@ using namespace std;
 
 #ifdef LOCAL
 #include "lib/debug.h"
-#define dbg(...) \
+#define dbg(...)                                                               \
   cerr << "Line " << __LINE__ << ": " FOR_EACH_MACRO(out, __VA_ARGS__) << "\n"
 #else
 #define dbg(...) 69
@@ -15,32 +15,34 @@ const int mod = 1e9 + 7;
 // #define googleOrFacebook
 // #define testcases
 
-void solve()
-{
-  deque<pair<int,int>> dq;
-  int q; cin>>q;
-  while(q--){
-    int x; cin>>x;
-    if(x==1){
-      int y; cin>>y;
-      if(dq.empty()){
-        dq.push_back({0,y-1});
-      } else{
-        dq.push_back({dq.back().second+1,dq.back().second+y});
+void solve() {
+  deque<pair<int, int>> dq;
+  int q;
+  cin >> q;
+  while (q--) {
+    int x;
+    cin >> x;
+    if (x == 1) {
+      int y;
+      cin >> y;
+      if (dq.empty()) {
+        dq.push_back({0, y - 1});
+      } else {
+        dq.push_back({dq.back().second + 1, dq.back().second + y});
       }
-    } else if(x==2){
+    } else if (x == 2) {
       dq.pop_front();
-    } else{
-      int k; cin>>k;
+    } else {
+      int k;
+      cin >> k;
       dbg(k, dq.size());
-      cout<<dq[k-1].first-dq.front().first<<"\n";
+      cout << dq[k - 1].first - dq.front().first << "\n";
     }
   }
   dbg("SEX");
 }
 
-signed main()
-{
+signed main() {
   cin.tie(NULL);
   ios_base::sync_with_stdio(false);
 #ifdef LOCAL
@@ -51,8 +53,7 @@ signed main()
 #ifdef testcases
   cin >> tt;
 #endif
-  while (t <= tt)
-  {
+  while (t <= tt) {
 #ifdef googleOrFacebook
     cout << "Case #" << t << ": ";
 #endif

@@ -4,7 +4,7 @@ using namespace std;
 
 #ifdef LOCAL
 #include "lib/debug.h"
-#define dbg(...) \
+#define dbg(...)                                                               \
   cerr << "Line " << __LINE__ << ": " FOR_EACH_MACRO(out, __VA_ARGS__) << "\n"
 #else
 #define dbg(...) 69
@@ -18,37 +18,29 @@ int n, m;
 vector<string> vs;
 string narek = "narek";
 vector<int> dp[5];
-bool inNarek(char c)
-{
+bool inNarek(char c) {
   return c == 'n' || c == 'a' || c == 'r' || c == 'e' || c == 'k';
 }
-int fun(int i, int jj)
-{
-  if (i == n)
-  {
+int fun(int i, int jj) {
+  if (i == n) {
     return -1 * jj;
   }
   if (dp[jj][i] != -1)
     return dp[jj][i];
   int curr = 0;
   int org = jj;
-  for (int j = 0; j < m; j++)
-  {
-    if (vs[i][j] == narek[jj])
-    {
+  for (int j = 0; j < m; j++) {
+    if (vs[i][j] == narek[jj]) {
       (jj += 1) %= 5;
       if (jj == 0)
         curr += 5;
-    }
-    else if (inNarek(vs[i][j]))
-    {
+    } else if (inNarek(vs[i][j])) {
       curr--;
     }
   }
   return dp[org][i] = max(curr + fun(i + 1, jj), fun(i + 1, org));
 }
-void solve()
-{
+void solve() {
   cin >> n >> m;
   vs.clear();
   vs.resize(n);
@@ -65,8 +57,7 @@ void solve()
   // dbg("SEX");
 }
 
-signed main()
-{
+signed main() {
   cin.tie(NULL);
   ios_base::sync_with_stdio(false);
 #ifdef LOCAL
@@ -77,8 +68,7 @@ signed main()
 #ifdef testcases
   cin >> tt;
 #endif
-  while (t <= tt)
-  {
+  while (t <= tt) {
 #ifdef googleOrFacebook
     cout << "Case #" << t << ": ";
 #endif

@@ -4,7 +4,7 @@ using namespace std;
 
 #ifdef LOCAL
 #include "lib/debug.h"
-#define dbg(...) \
+#define dbg(...)                                                               \
   cerr << "Line " << __LINE__ << ": " FOR_EACH_MACRO(out, __VA_ARGS__) << "\n"
 #else
 #define dbg(...) 69
@@ -15,30 +15,33 @@ const int mod = 1e9 + 7;
 // #define googleOrFacebook
 // #define testcases
 
-void solve()
-{
-  int n, m;  cin>>n>>m;
+void solve() {
+  int n, m;
+  cin >> n >> m;
   vector<string> s(n), t(m);
-  for(int a=0;a<n;a++) cin>>s[a];
-  for(int a=0;a<m;a++) cin>>t[a];
-  for(int a=0;a<n;a++)
-  {
-    if(a+m>n)break;
-    for(int b=0;b<n;b++)
-    {
-      if(b+m>n)break;
-      bool f=false;
-      for(int al=0;al<m;al++){
-        for(int bl=0;bl<m;bl++){
-          if(s[a+al][b+bl]!=t[al][bl]){
-            f=true;
+  for (int a = 0; a < n; a++)
+    cin >> s[a];
+  for (int a = 0; a < m; a++)
+    cin >> t[a];
+  for (int a = 0; a < n; a++) {
+    if (a + m > n)
+      break;
+    for (int b = 0; b < n; b++) {
+      if (b + m > n)
+        break;
+      bool f = false;
+      for (int al = 0; al < m; al++) {
+        for (int bl = 0; bl < m; bl++) {
+          if (s[a + al][b + bl] != t[al][bl]) {
+            f = true;
             break;
           }
         }
-        if(f)break;
+        if (f)
+          break;
       }
-      if(!f){
-        cout<<a+1<<" "<<b+1;
+      if (!f) {
+        cout << a + 1 << " " << b + 1;
         return;
       }
     }
@@ -46,8 +49,7 @@ void solve()
   dbg("SEX");
 }
 
-signed main()
-{
+signed main() {
   cin.tie(NULL);
   ios_base::sync_with_stdio(false);
 #ifdef LOCAL
@@ -58,8 +60,7 @@ signed main()
 #ifdef testcases
   cin >> tt;
 #endif
-  while (t <= tt)
-  {
+  while (t <= tt) {
 #ifdef googleOrFacebook
     cout << "Case #" << t << ": ";
 #endif

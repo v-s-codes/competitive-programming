@@ -4,7 +4,7 @@ using namespace std;
 
 #ifdef LOCAL
 #include "lib/debug.h"
-#define dbg(...) \
+#define dbg(...)                                                               \
   cerr << "Line " << __LINE__ << ": " FOR_EACH_MACRO(out, __VA_ARGS__) << "\n"
 #else
 #define dbg(...) 69
@@ -15,39 +15,38 @@ const int mod = 1e9 + 7;
 // #define googleOrFacebook
 #define testcases
 
-void solve()
-{
-  int n, i,k;
-  cin >> n>>k;
+void solve() {
+  int n, i, k;
+  cin >> n >> k;
   vector<int> a(n);
   vector<int> b(n);
   set<int> vals;
-  for (i = 0; i < n; i++)
-  {
+  for (i = 0; i < n; i++) {
     cin >> a[i];
     vals.insert(a[i]);
   }
-  sort(a.begin(),a.end());
-  for (i = 0; i < n; i++)
-  {
+  sort(a.begin(), a.end());
+  for (i = 0; i < n; i++) {
     cin >> b[i];
     vals.insert(b[i]);
   }
-  sort(b.begin(),b.end());
-  int mx=0;
-  for(auto x:vals){
-    int cnta=lower_bound(a.begin(),a.end(),x)-a.begin(); cnta=n-cnta;
-    int cntb=lower_bound(b.begin(),b.end(),x)-b.begin(); cntb=n-cntb;
-    if((cntb-cnta)>k)continue;
+  sort(b.begin(), b.end());
+  int mx = 0;
+  for (auto x : vals) {
+    int cnta = lower_bound(a.begin(), a.end(), x) - a.begin();
+    cnta = n - cnta;
+    int cntb = lower_bound(b.begin(), b.end(), x) - b.begin();
+    cntb = n - cntb;
+    if ((cntb - cnta) > k)
+      continue;
     dbg(x, cnta, cntb);
-    mx=max(mx, cntb*x);
+    mx = max(mx, cntb * x);
   }
-  cout<<mx;
+  cout << mx;
   dbg("SEX");
 }
 
-signed main()
-{
+signed main() {
   cin.tie(NULL);
   ios_base::sync_with_stdio(false);
 #ifdef LOCAL
@@ -58,8 +57,7 @@ signed main()
 #ifdef testcases
   cin >> tt;
 #endif
-  while (t <= tt)
-  {
+  while (t <= tt) {
 #ifdef googleOrFacebook
     cout << "Case #" << t << ": ";
 #endif
