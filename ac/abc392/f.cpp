@@ -1,5 +1,13 @@
-#include "bits/stdc++.h"
+#include <bits/stdc++.h>
 using namespace std;
+#include <ext/pb_ds/assoc_container.hpp>
+#include <ext/pb_ds/tree_policy.hpp>
+using namespace __gnu_pbds;
+
+#define ordered_set                                                            \
+  tree<int, null_type, less<int>, rb_tree_tag,                                 \
+       tree_order_statistics_node_update>
+
 #define int long long
 
 #ifdef LOCAL
@@ -13,28 +21,36 @@ using namespace std;
 const int mod = 1e9 + 7;
 
 // #define googleOrFacebook
-#define testcases
+// #define testcases
 
 void solve() {
   int n, i;
   cin >> n;
+  ordered_set os;
   vector<int> v(n);
-  int total = 0;
   for (i = 0; i < n; i++) {
     cin >> v[i];
-    total += v[i];
+    os.insert(i);
   }
-  cout << total;
+  vector<int> ans(n);
+  for (i = n - 1; i >= 0; i--) {
+    int x = v[i] - 1;
+    int y = *(os.find_by_order(x));
+    ans[y] = i + 1;
+    os.erase(y);
+  }
+  for (auto z : ans)
+    cout << z << " ";
   dbg("SEX");
 }
 
 signed main() {
   cin.tie(NULL);
   ios_base::sync_with_stdio(false);
-#ifdef LOCAL
-  freopen("input.txt", "r", stdin);
-  freopen("output.txt", "w", stdout);
-#endif
+  // #ifdef LOCAL
+  //   freopen("input.txt", "r", stdin);
+  //   freopen("output.txt", "w", stdout);
+  // #endif
   int tt = 1, t = 1;
 #ifdef testcases
   cin >> tt;
